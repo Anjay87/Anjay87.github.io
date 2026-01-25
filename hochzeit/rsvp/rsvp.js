@@ -20,7 +20,7 @@ let rsvpSuccessMaybe;
 function initRSVPForm() {
   rsvpForm = document.getElementById("rsvpForm");
   attendanceRadios = document.querySelectorAll(
-    'input[name="entry.2071026655"]'
+    'input[name="entry.2071026655"]',
   );
   guestCountGroup = document.getElementById("guestCountGroup");
   dietaryGroup = document.getElementById("dietaryGroup");
@@ -75,7 +75,7 @@ function initRSVPForm() {
  */
 function getSelectedAttendance() {
   const selected = document.querySelector(
-    'input[name="entry.2071026655"]:checked'
+    'input[name="entry.2071026655"]:checked',
   );
   return selected ? selected.value : null;
 }
@@ -118,8 +118,10 @@ function handleFormSubmit(e) {
   }
 
   // Google Forms URL
-  const googleFormsURL =
-    "https://docs.google.com/forms/d/e/1FAIpQLScSVOodADafzDHE8qC4RLEIpPF26f2ZwpO7cTJ1MlI7KigrYg/formResponse";
+  // const googleFormsURL =
+  // "https://docs.google.com/forms/d/e/1FAIpQLScSVOodADafzDHE8qC4RLEIpPF26f2ZwpO7cTJ1MlI7KigrYg/formResponse";
+
+  const googleFormsURL = "";
 
   // Submit to Google Forms using fetch
   fetch(googleFormsURL, {
@@ -177,7 +179,7 @@ function handleFormSubmit(e) {
     console.error("RSVP submission failed:", errorMessage);
 
     alert(
-      `Entschuldigung, es gab einen Fehler beim Senden deiner Antwort. ${errorMessage}\n\nBitte versuche es nochmal oder kontaktiere uns direkt.`
+      `Entschuldigung, es gab einen Fehler beim Senden deiner Antwort. ${errorMessage}\n\nBitte versuche es nochmal oder kontaktiere uns direkt.`,
     );
 
     // Reset button state
