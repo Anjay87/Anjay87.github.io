@@ -166,23 +166,95 @@ scrollToTopBtn.addEventListener("click", () => {
 const bgMusic = document.getElementById("bgMusic");
 const musicToggle = document.getElementById("musicToggle");
 let isPlaying = false;
+let hasTriedMuted = false;
 
-// Try to autoplay when page loads (after user interaction)
-window.addEventListener("load", () => {
-  // Attempt to play after a short delay
-  setTimeout(() => {
-    bgMusic
-      .play()
-      .then(() => {
-        isPlaying = true;
-        musicToggle.classList.add("playing");
-      })
-      .catch(() => {
+// Function to start music
+function startMusic() {
+  // Set volume first
+  bgMusic.volume = 0.3;
+
+  bgMusic
+    .play()
+    .then(() => {
+      isPlaying = true;
+      musicToggle.classList.add("playing");
+      console.log("Music started successfully");
+    })
+    .catch((error) => {
+      console.log("Autoplay blocked:", error);
+      // Try muted autoplay as fallback
+      if (!hasTriedMuted) {
+        hasTriedMuted = true;
+        bgMusic.muted = true;
+        bgMusic
+          .play()
+          .then(() => {
+            isPlaying = true;
+            musicToggle.classList.add("playing");
+            // Try to unmute after a short delay
+            setTimeout(() => {
+              bgMusic.muted = false;
+            }, 1000);
+          })
+          .catch(() => {
+            isPlaying = false;
+            musicToggle.classList.remove("playing");
+          });
+      } else {
         // Autoplay was prevented, user needs to click
         isPlaying = false;
         musicToggle.classList.remove("playing");
-      });
+      }
+    });
+}
+
+// Try multiple times to start music
+function attemptAutoplay() {
+  startMusic();
+  // Retry after short delays
+  setTimeout(() => {
+    if (!isPlaying) startMusic();
+  }, 100);
+  setTimeout(() => {
+    if (!isPlaying) startMusic();
   }, 500);
+  setTimeout(() => {
+    if (!isPlaying) startMusic();
+  }, 1000);
+}
+
+// Try to autoplay as soon as DOM is ready
+document.addEventListener("DOMContentLoaded", () => {
+  attemptAutoplay();
+});
+
+// Try again when page is fully loaded
+window.addEventListener("load", () => {
+  if (!isPlaying) {
+    attemptAutoplay();
+  }
+});
+
+// Also try to start on first user interaction
+const startOnInteraction = () => {
+  if (!isPlaying) {
+    bgMusic.muted = false; // Ensure not muted on user interaction
+    startMusic();
+  }
+};
+
+// Listen for various user interaction events
+[
+  "click",
+  "keydown",
+  "touchstart",
+  "scroll",
+  "mousemove",
+  "mousedown",
+  "pointerdown",
+  "touchmove",
+].forEach((event) => {
+  document.addEventListener(event, startOnInteraction, { once: true });
 });
 
 // Toggle music on button click
@@ -190,12 +262,18 @@ musicToggle.addEventListener("click", () => {
   if (isPlaying) {
     bgMusic.pause();
     musicToggle.classList.remove("playing");
+    isPlaying = false;
   } else {
-    bgMusic.play();
-    musicToggle.classList.add("playing");
+    bgMusic.muted = false; // Ensure not muted when user manually starts
+    bgMusic
+      .play()
+      .then(() => {
+        isPlaying = true;
+        musicToggle.classList.add("playing");
+      })
+      .catch(() => {
+        isPlaying = false;
+        musicToggle.classList.remove("playing");
+      });
   }
-  isPlaying = !isPlaying;
 });
-
-// Set initial volume to a pleasant level
-bgMusic.volume = 0.3;
