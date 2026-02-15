@@ -28,7 +28,7 @@ function initRSVPForm() {
   // Show/hide additional fields based on attendance selection
   attendanceRadios.forEach((radio) => {
     radio.addEventListener("change", function () {
-      if (this.value === "Ja, ich komme gerne!") {
+      if (this.value === "Ja") {
         guestCountGroup.style.display = "block";
       } else {
         guestCountGroup.style.display = "none";
