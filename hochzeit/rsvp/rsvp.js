@@ -20,7 +20,7 @@ let rsvpSuccessMaybe;
 function initRSVPForm() {
   rsvpForm = document.getElementById("rsvpForm");
   attendanceRadios = document.querySelectorAll(
-    'input[name="entry.2071026655"]',
+    'input[name="entry.754892114"]',
   );
   guestCountGroup = document.getElementById("guestCountGroup");
   dietaryGroup = document.getElementById("dietaryGroup");
@@ -29,7 +29,6 @@ function initRSVPForm() {
   btnLoading = document.querySelector(".btn-loading");
   rsvpSuccessYes = document.getElementById("rsvpSuccessYes");
   rsvpSuccessNo = document.getElementById("rsvpSuccessNo");
-  rsvpSuccessMaybe = document.getElementById("rsvpSuccessMaybe");
 
   // Show/hide additional fields based on attendance selection
   attendanceRadios.forEach((radio) => {
@@ -75,7 +74,7 @@ function initRSVPForm() {
  */
 function getSelectedAttendance() {
   const selected = document.querySelector(
-    'input[name="entry.2071026655"]:checked',
+    'input[name="entry.754892114"]:checked',
   );
   return selected ? selected.value : null;
 }
@@ -97,31 +96,21 @@ function handleFormSubmit(e) {
 
   // Collect form data
   const formData = new FormData();
-  formData.append("entry.2114606884", document.getElementById("name").value); // Name
-  formData.append("entry.2058424189", document.getElementById("email").value); // Email
-  formData.append("entry.2071026655", attendance); // Attendance
+  formData.append("entry.1799783415", document.getElementById("name").value); // Name
+  formData.append("entry.1928531054", document.getElementById("email").value); // Email
+  formData.append("entry.754892114", attendance); // Attendance
 
   // Optional fields
   const guestCount = document.getElementById("guestCount").value;
   if (guestCount) {
-    formData.append("entry.615218508", guestCount);
-  }
-
-  const dietary = document.getElementById("dietary").value;
-  if (dietary) {
-    formData.append("entry.1262614715", dietary);
-  }
-
-  const message = document.getElementById("message").value;
-  if (message) {
-    formData.append("entry.898837310", message);
+    formData.append("entry.925708866", guestCount);
   }
 
   // Google Forms URL
   // const googleFormsURL =
-  // "https://docs.google.com/forms/d/e/1FAIpQLScSVOodADafzDHE8qC4RLEIpPF26f2ZwpO7cTJ1MlI7KigrYg/formResponse";
+  // "https://docs.google.com/forms/d/e/1FAIpQLSc1iVvmIh_UBqZIaL0vonx4CA475qqhJ3Fw0uG0FkIOiWSRtw/viewform?usp=publish-editor";
 
-  const googleFormsURL = "";
+  const googleFormsURL = "https://docs.google.com/forms/d/e/1FAIpQLSc1iVvmIh_UBqZIaL0vonx4CA475qqhJ3Fw0uG0FkIOiWSRtw/formResponse";
 
   // Submit to Google Forms using fetch
   fetch(googleFormsURL, {
@@ -208,12 +197,12 @@ function resetForm() {
  */
 function downloadCalendarEvent() {
   const event = {
-    title: "Hochzeit Jan & Joana 💒",
+    title: "Hochzeit Chantal & André 💒",
     description:
-      "Hochzeit von Jan Helfen & Joana Leipzig\n\nLocation: Bleckmanns Hof\nIm Alten Dorf 1\n59368 Werne\n\nWir freuen uns auf euch!",
-    location: "Bleckmanns Hof, Im Alten Dorf 1, 59368 Werne",
-    startDate: new Date("2026-05-16T14:00:00"),
-    endDate: new Date("2026-05-17T02:00:00"),
+      "Hochzeit von Chantal Schmitz & André Weber\n\nLocation: Dorfgemeinschaftshaus Floisdorf\nWesseler Str. 6\n53894 Floisdorf\n\nWir freuen uns auf euch!",
+    location: "Dorfgemeinschaftshaus Floisdorf, Wesseler Str. 6, 53894 Floisdorf",
+    startDate: new Date("2026-08-15T13:00:00"),
+    endDate: new Date("2026-08-16T02:00:00"),
   };
 
   // Format date for ICS (YYYYMMDDTHHMMSS)
@@ -225,14 +214,14 @@ function downloadCalendarEvent() {
   const icsContent = [
     "BEGIN:VCALENDAR",
     "VERSION:2.0",
-    "PRODID:-//Jan & Joana Hochzeit//DE",
+    "PRODID:-//Chantal & André Hochzeit//DE",
     "CALSCALE:GREGORIAN",
     "METHOD:PUBLISH",
     "BEGIN:VEVENT",
-    "UID:" + Date.now() + "@hochzeit-jan-joana.de",
+    "UID:" + Date.now() + "@hochzeit-chantal-andré.de",
     "DTSTAMP:" + formatDate(new Date()),
-    "DTSTART:20260516T140000",
-    "DTEND:20260517T020000",
+    "DTSTART:20260815T130000",
+    "DTEND:20260816T020000",
     "SUMMARY:" + event.title,
     "DESCRIPTION:" + event.description.replace(/\n/g, "\\n"),
     "LOCATION:" + event.location,
@@ -247,7 +236,7 @@ function downloadCalendarEvent() {
   });
   const link = document.createElement("a");
   link.href = URL.createObjectURL(blob);
-  link.download = "Hochzeit_Jan_Joana_2026.ics";
+  link.download = "Hochzeit_Chantal_André_2026.ics";
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);

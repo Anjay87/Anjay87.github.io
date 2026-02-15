@@ -76,10 +76,7 @@ window.addEventListener("load", function () {
 
 // Image Gallery Navigation
 const galleryImages = [
-  "assets/bilder/bleckmannshof/bleckmannshof_1.jpg",
-  "assets/bilder/bleckmannshof/bleckmannshof_2.jpg",
-  "assets/bilder/bleckmannshof/bleckmannshof_3.jpg",
-  "assets/bilder/bleckmannshof/bleckmannshof_4.jpg",
+  "assets/bilder/Floisdorf.jpg",
 ];
 let currentImageIndex = 0;
 
