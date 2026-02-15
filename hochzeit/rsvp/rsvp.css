@@ -5,13 +5,13 @@
 /* CSS Variables for easy theme customization */
 :root {
   /* Primary accent colors */
-  --accent-primary: #2d3436;
-  --accent-primary-hover: #1e2324;
-  --accent-primary-light: #4a4f51;
+  --accent-primary: #543b2d;
+  --accent-primary-hover: #efebdc;
+  --accent-primary-light: #a69077;
 
   /* Background colors */
-  --bg-primary: #d0d7ce;
-  --bg-secondary: #a8b5a0;
+  --bg-primary: #e7c8a0;
+  --bg-secondary: #d07a558c;
   --bg-gradient: linear-gradient(
     135deg,
     var(--bg-primary) 0%,

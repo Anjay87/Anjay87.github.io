@@ -185,9 +185,9 @@ function downloadCalendarEvent() {
   const event = {
     title: "Hochzeit Chantal & André 💒",
     description:
-      "Hochzeit von Chantal Schmitz & André Weber\n\nLocation: Dorfgemeinschaftshaus Floisdorf\nWesseler Str. 6\n53894 Floisdorf\n\nWir freuen uns auf euch!",
+      "Hochzeit von Chantal Schmitz & André Weber\n\nLocation: Dorfgemeinschaftshaus Floisdorf\nSchulstrasse\n53894 Floisdorf\n\nWir freuen uns auf euch!",
     location:
-      "Dorfgemeinschaftshaus Floisdorf, Wesseler Str. 6, 53894 Floisdorf",
+      "Dorfgemeinschaftshaus Floisdorf, Schulstrasse, 53894 Floisdorf",
     startDate: new Date("2026-08-15T13:00:00"),
     endDate: new Date("2026-08-16T02:00:00"),
   };

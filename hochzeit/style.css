@@ -9,13 +9,18 @@
    =========================================== */
 :root {
   /* Primary Accent Color (dark gray) */
-  --accent-primary: #2d3436;
-  --accent-primary-hover: #1e2324;
-  --accent-primary-light: #4a4f51;
+  --accent-primary: #543b2d;
+  --accent-primary-hover: #efebdc;
+  --accent-primary-light: #a69077;
 
   /* Background Colors (sage green) */
   --bg-primary: #e7c8a0;
-  --bg-secondary: #97a28f;
+  --bg-secondary: #d07a558c;
+   --bg-gradient: linear-gradient(
+    135deg,
+    var(--bg-primary) 0%,
+    var(--bg-secondary) 100%
+  );
 
   /* Text Colors */
   --text-dark: #674f2d;
@@ -156,7 +161,7 @@ body {
 .ring:nth-child(2) {
   width: 80%;
   height: 80%;
-  border-top-color: #5a7a3c;
+  border-top-color: #543b2d;
   animation-duration: 2s;
   animation-delay: -0.5s;
 }
@@ -164,7 +169,7 @@ body {
 .ring:nth-child(3) {
   width: 60%;
   height: 60%;
-  border-top-color: #7a9a5c;
+  border-top-color: #543b2d;
   animation-duration: 2.5s;
   animation-delay: -1s;
 }
