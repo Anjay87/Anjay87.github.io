@@ -124,7 +124,9 @@ body {
   align-items: center;
   z-index: 9999;
   opacity: 1;
-  transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+  transition:
+    opacity 0.5s ease-out,
+    visibility 0.5s ease-out;
 }
 
 .loading-screen.fade-out {
@@ -592,7 +594,9 @@ h2 {
   margin-bottom: 0;
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transition:
+    opacity 0.6s ease-out,
+    transform 0.6s ease-out;
   position: relative;
 }
 
@@ -795,7 +799,9 @@ h2 {
   color: var(--accent-primary);
   text-decoration: none;
   border-bottom: 1px solid var(--accent-primary);
-  transition: color 0.3s, border-color 0.3s;
+  transition:
+    color 0.3s,
+    border-color 0.3s;
 }
 
 .contact-details a:hover {
