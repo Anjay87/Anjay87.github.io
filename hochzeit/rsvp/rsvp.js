@@ -6,24 +6,19 @@
 let rsvpForm;
 let attendanceRadios;
 let guestCountGroup;
-let dietaryGroup;
 let submitBtn;
 let btnText;
 let btnLoading;
 let rsvpSuccessYes;
 let rsvpSuccessNo;
-let rsvpSuccessMaybe;
 
 /**
  * Initialize the RSVP form
  */
 function initRSVPForm() {
   rsvpForm = document.getElementById("rsvpForm");
-  attendanceRadios = document.querySelectorAll(
-    'input[name="entry.754892114"]',
-  );
+  attendanceRadios = document.querySelectorAll('input[name="entry.754892114"]');
   guestCountGroup = document.getElementById("guestCountGroup");
-  dietaryGroup = document.getElementById("dietaryGroup");
   submitBtn = document.getElementById("submitBtn");
   btnText = document.querySelector(".btn-text");
   btnLoading = document.querySelector(".btn-loading");
@@ -35,10 +30,8 @@ function initRSVPForm() {
     radio.addEventListener("change", function () {
       if (this.value === "Ja, ich komme gerne!") {
         guestCountGroup.style.display = "block";
-        dietaryGroup.style.display = "block";
       } else {
         guestCountGroup.style.display = "none";
-        dietaryGroup.style.display = "none";
       }
     });
   });
@@ -110,7 +103,8 @@ function handleFormSubmit(e) {
   // const googleFormsURL =
   // "https://docs.google.com/forms/d/e/1FAIpQLSc1iVvmIh_UBqZIaL0vonx4CA475qqhJ3Fw0uG0FkIOiWSRtw/viewform?usp=publish-editor";
 
-  const googleFormsURL = "https://docs.google.com/forms/d/e/1FAIpQLSc1iVvmIh_UBqZIaL0vonx4CA475qqhJ3Fw0uG0FkIOiWSRtw/formResponse";
+  const googleFormsURL =
+    "https://docs.google.com/forms/d/e/1FAIpQLSc1iVvmIh_UBqZIaL0vonx4CA475qqhJ3Fw0uG0FkIOiWSRtw/formResponse";
 
   // Submit to Google Forms using fetch
   fetch(googleFormsURL, {
@@ -137,21 +131,15 @@ function handleFormSubmit(e) {
     rsvpForm.style.display = "none";
 
     // Show appropriate success message
-    if (attendance === "Ja, ich komme gerne!") {
+    if (attendance === "Ja") {
       rsvpSuccessYes.style.display = "block";
       rsvpSuccessYes.scrollIntoView({
         behavior: "smooth",
         block: "center",
       });
-    } else if (attendance === "Nein, leider kann ich nicht") {
+    } else if (attendance === "Nein") {
       rsvpSuccessNo.style.display = "block";
       rsvpSuccessNo.scrollIntoView({
-        behavior: "smooth",
-        block: "center",
-      });
-    } else {
-      rsvpSuccessMaybe.style.display = "block";
-      rsvpSuccessMaybe.scrollIntoView({
         behavior: "smooth",
         block: "center",
       });
@@ -184,11 +172,9 @@ function handleFormSubmit(e) {
 function resetForm() {
   rsvpForm.reset();
   guestCountGroup.style.display = "none";
-  dietaryGroup.style.display = "none";
   rsvpForm.style.display = "block";
   rsvpSuccessYes.style.display = "none";
   rsvpSuccessNo.style.display = "none";
-  rsvpSuccessMaybe.style.display = "none";
   rsvpForm.scrollIntoView({ behavior: "smooth", block: "center" });
 }
 
@@ -200,7 +186,8 @@ function downloadCalendarEvent() {
     title: "Hochzeit Chantal & André 💒",
     description:
       "Hochzeit von Chantal Schmitz & André Weber\n\nLocation: Dorfgemeinschaftshaus Floisdorf\nWesseler Str. 6\n53894 Floisdorf\n\nWir freuen uns auf euch!",
-    location: "Dorfgemeinschaftshaus Floisdorf, Wesseler Str. 6, 53894 Floisdorf",
+    location:
+      "Dorfgemeinschaftshaus Floisdorf, Wesseler Str. 6, 53894 Floisdorf",
     startDate: new Date("2026-08-15T13:00:00"),
     endDate: new Date("2026-08-16T02:00:00"),
   };
